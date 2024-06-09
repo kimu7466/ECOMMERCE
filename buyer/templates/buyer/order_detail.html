@@ -1,0 +1,110 @@
+{% extends 'buyer/base.html' %}
+{% load static %}
+{% block title %}
+Cart
+{% endblock %}
+{% block styles %}
+<style>
+    .avatar-lg {
+        height: 5rem;
+        width: 5rem;
+    }
+
+    .font-size-18 {
+        font-size: 18px !important;
+    }
+
+    .text-truncate {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+
+    a {
+        text-decoration: none !important;
+    }
+
+    .w-xl {
+        min-width: 160px;
+    }
+
+    .card {
+        margin-bottom: 24px;
+        -webkit-box-shadow: 0 2px 3px #e4e8f0;
+        box-shadow: 0 2px 3px #e4e8f0;
+    }
+
+    .card {
+        position: relative;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+        flex-direction: column;
+        min-width: 0;
+        word-wrap: break-word;
+        background-color: #fff;
+        background-clip: border-box;
+        border: 1px solid #eff0f2;
+        border-radius: 1rem;
+    }
+</style>
+{% endblock %}
+{% block body %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Details</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+    <div class="order-details-container">
+        <h1>Order Details</h1>
+        <div class="order-summary">
+            <p><strong>Order Number:</strong> {{ order.id }}</p>
+            <p><strong>Order Date:</strong> {{ order.order_date }}</p>
+        </div>
+        <div class="customer-info">
+            <h2>Customer Information</h2>
+            <p><strong>Name:</strong> {{ order.customer_name }}</p>
+            <p><strong>Email:</strong> {{ order.customer_email }}</p>
+        </div>
+        <div class="shipping-address">
+            <h2>Shipping Address</h2>
+            <p>{{ order.shipping_address }}</p>
+        </div>
+        <div class="order-items">
+            <h2>Items Purchased</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Item</th>
+                        <th>Quantity</th>
+                        <th>Price</th>
+                        <th>Total</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for item in order.items.all %}
+                    <tr>
+                        <td>{{ item.product_name }}</td>
+                        <td>{{ item.quantity }}</td>
+                        <td>${{ item.price }}</td>
+                        <td>${{ item.price|floatformat:2|floatformat:2|mul:item.quantity }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <div class="order-total">
+            <h2>Order Total</h2>
+            <p><strong>Total:</strong> ${{ order.total_price }}</p>
+        </div>
+    </div>
+</body>
+</html>

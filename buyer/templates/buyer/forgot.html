@@ -1,0 +1,115 @@
+{% extends 'buyer/out_base.html' %}
+{% load static %}
+{% block title %}Login{% endblock %}
+
+
+{% block styles %}
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f2f2f2;
+    }
+
+    .forgot-password-form {
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        max-width: 400px;
+        margin: 0 auto;
+    }
+
+    .forgot-password-form label {
+        display: block;
+        margin-bottom: 10px;
+    }
+
+    .forgot-password-form input[type="email"] {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 20px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        box-sizing: border-box;
+    }
+
+    .forgot-password-form button {
+        width: 100%;
+        padding: 10px;
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    .forgot-password-form button:hover {
+        background-color: #0056b3;
+    }
+
+    .login-link {
+        text-align: center;
+        margin-top: 20px;
+    }
+
+    .login-link a {
+        color: #007bff;
+        text-decoration: none;
+    }
+    .space{
+        height: 550px;
+        align-content: center;
+    }
+</style>
+{% endblock %}
+
+{% block body %}
+
+<!DOCTYPE html>
+<body>
+    <div class="space">
+    <div class="forgot-password-form">
+        <h2>Forgot Password</h2>
+        <form method="post" class="form">
+            {% csrf_token %}
+            <label for="email">Enter your email address:</label>
+            <input type="email" id="email" name="email" placeholder="Enter your email" required>
+            <button type="submit">Submit</button>
+        </form>
+        <div class="login-link">
+            <p>Already have an account? <a href="{% url 'login_view' %}">Log in</a></p>
+        </div>
+    </div>
+</div>
+</body>
+</html>
+
+{% comment %} <section class="vh-100">
+    <h1 class="display-6 fw-bold text-center text-dark my-3">Forgot your password</h1>
+    <div class="container-fluid h-custom my-5">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col-md-8 col-lg-6 col-xl-4 ">
+                <form action="{% url 'forgot_password_view' %}" method="post">
+                {% csrf_token %}
+                    <!-- Email input -->
+                    <div class="form-outline mb-4">
+                        <label class="form-label" for="form3Example3">Email address</label>
+                        <input type="email" id="form3Example3" class="form-control form-control-lg" name="email"
+                            placeholder="Example@gmail.com" />
+                    </div>
+
+                    <div class="text-center text-lg-start mt-4 pt-2">
+                        <button type="submit" class="btn btn-primary btn-lg"
+                            style="padding-left: 2.5rem; padding-right: 2.5rem;">Submit</button>
+                        <p class="small fw-bold mt-2 pt-1 mb-0">Already an account? <a href="{% url 'login_view' %}"
+                                class="link-danger">Login</a></p>
+                    </div>
+
+                </form>
+            </div>
+            
+        </div>
+    </div>
+
+</section> {% endcomment %}
+{% endblock %}

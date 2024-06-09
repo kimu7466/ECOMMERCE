@@ -1,0 +1,99 @@
+{% extends 'buyer/out_base.html' %}
+{% load static %}
+{% block title %}
+Log In
+{% endblock%}
+{% block styles %}
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f2f2f2;
+    }
+
+    .login-form {
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        max-width: 400px;
+        margin: 0 auto;
+    }
+
+    .login-form label {
+        display: block;
+        margin-bottom: 10px;
+    }
+
+    .login-form input[type="email"],
+    .login-form input[type="password"] {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 20px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        box-sizing: border-box;
+    }
+
+    .login-form button {
+        width: 100%;
+        padding: 10px;
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    .login-form button:hover {
+        background-color: #0056b3;
+    }
+
+    .forgot-password-link {
+        text-align: center;
+        margin-top: 10px;
+    }
+
+    .forgot-password-link a {
+        color: #007bff;
+        text-decoration: none;
+    }
+    .space{
+        height: 550px;
+        align-content: center;
+    }
+    .bi-2x {
+        font-size: 2em;
+    }
+    .color{
+      color:blue;
+    }
+</style>
+{% endblock %}
+{% block body %}
+
+
+<body>
+    <div class="space">
+    <div class="login-form">
+        <h2>Login</h2>
+        <form action="{% url 'login_view' %}" method="post">
+            {% csrf_token %}
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" placeholder="Enter your email" required>
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" placeholder="Enter your password" required>
+            <button type="submit">Login</button>
+        </form>
+        <div class="forgot-password-link">
+            <a href="{% url 'forgot_password_view' %}">Forgot Password?</a>
+        </div>
+        <div class="register-link">
+            <p>Don't have an account? <a href="{% url 'register_view' %}">Register</a></p>
+        </div>
+    </div>
+</div>
+</body>
+</html>
+
+
+{% endblock %}

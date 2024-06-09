@@ -1,0 +1,77 @@
+{% extends 'buyer/out_base.html' %}
+{% load static %}
+{% block title %}Login{% endblock %}
+
+
+{% block styles %}
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f2f2f2;
+    }
+
+    .registration-form {
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        max-width: 400px;
+        margin: 0 auto;
+    }
+
+    .registration-form label {
+        display: block;
+        margin-bottom: 10px;
+    }
+
+    .registration-form input[type="email"],
+    .registration-form input[type="password"] {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 20px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        box-sizing: border-box;
+    }
+
+    .registration-form button {
+        width: 100%;
+        padding: 10px;
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    .registration-form button:hover {
+        background-color: #0056b3;
+    }
+    .space{
+        height: 550px;
+        align-content: center;
+    }
+</style>
+{% endblock %}
+
+{% block body %}
+
+<body>
+    <div class="space">
+    <div class="registration-form"> 
+        <h2>Registration</h2>
+        <form action="{% url 'register_view' %}" method="post">
+            {% csrf_token %}
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" placeholder="Enter your email" required>
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" placeholder="Enter your password" required>
+            <label for="confirm_password">Confirm Password:</label>
+            <input type="password" id="confirm_password" name="c_password" placeholder="Confirm your password" required>
+            <button type="submit">Register</button>
+        </form>
+    </div>
+</div>
+</body>
+</html>
+{% endblock %}

@@ -1,0 +1,50 @@
+{% extends 'buyer/base.html' %}
+{% load static %}
+{% block title %}
+Contact
+{% endblock%}
+{% block styles %}
+{% endblock %}
+{% block body %}
+<div class="container my-3">
+    <div class="row">
+        <div class="col-lg-6">
+
+        </div>
+        <div class="col-lg-6">
+            <h1 class="display-6">Contact Form</h1>
+            <form action="" method="post" id="contact_form" name="contact_form" >
+                {% csrf_token %}
+                <div class="mb-5 row">
+                    <div class="col">
+                        <label>First Name</label>
+                        <input type="text" required maxlength="50" class="form-control" id="first_name"
+                            name="first_name" placeholder="michael">
+                    </div>
+                    <div class="col">
+                        <label>Last Name</label>
+                        <input type="text" required maxlength="50" class="form-control" id="last_name" name="last_name" placeholder="jordan">
+                    </div>
+                </div>
+                <div class="mb-5 row">
+                    <div class="col">
+                        <label for="email_addr">Email address</label>
+                        <input type="email" required maxlength="50" class="form-control" id="email_addr" name="email"
+                            placeholder="name@example.com">
+                    </div>
+                    <div class="col">
+                        <label for="phone_input">Phone</label>
+                        <input type="tel" required maxlength="50" class="form-control" id="phone_input" name="phone"
+                            placeholder="(+xxx) xxx xxxx xxx ">
+                    </div>
+                </div>
+                <div class="mb-5">
+                    <label for="message">Message</label>
+                    <textarea class="form-control" id="message" name="message" rows="5">Write message...</textarea>
+                </div>
+                <button type="submit" class="btn btn-dark px-4 btn-lg">Submit</button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
