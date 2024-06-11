@@ -1,15 +1,13 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
 from django.core.mail import send_mail
-from django.conf import settings    
-
+from django.conf import settings
 from authentication.models import customersModel, customerAddressModel
 from master.utils.LO_RANDOM.otp import generate_otp
 from master.utils.LO_VALIDATORS.fields import is_valid_email, is_valid_password
 from master.utils.LO_PAYMENT_GATWAY.razorpay_payment_gateway import razorpay_client
 from seller.models import productsModel, categoriesModel
 from .models import ContactUSModel,cartModel
-from django.conf import settings
 from django.http import JsonResponse
 from django.shortcuts import render, redirect, get_object_or_404
 from django.http import JsonResponse
@@ -18,8 +16,9 @@ from django.forms import modelformset_factory
 from .models import Order, OrderItem, cartModel
 from .forms import OrderForm, OrderItemForm
 import razorpay
-
 import os
+
+
 
 def login_required(view_func):
     def wrapper(request, *args, **kwargs):
@@ -339,7 +338,7 @@ def reset_password_otp_verification(request):
         otp_ = request.POST['otp']
         new_password_ = request.POST['new_password']
         confirm_password_ = request.POST['confirm_password']
-
+        
         try : 
             check_user = customersModel.objects.get(email=cum_email)
         except Exception as e:

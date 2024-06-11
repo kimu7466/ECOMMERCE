@@ -15,3 +15,5 @@ admin.site.register(ContactUSModel,ContactUSModelAdmin)
 admin.site.register(cartModel)
 admin.site.register(Order)
 admin.site.register(OrderItem)
+
+

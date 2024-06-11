@@ -5,6 +5,7 @@ from seller.models import productsModel
 
 # Create your models here.
 class ContactUSModel(baseModel):
+
     STATUS_CHOICES = (
         ('resolved', 'Resolved'),
         ('unresolved', 'Unresolved'),
